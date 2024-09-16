@@ -1,0 +1,26 @@
+Disaster Severity Categories 1-5
+Based on the search results, here is a categorization of disaster levels into 1 to 5:
+
+Level 1: Local Incident
+
+Characterized by localized damage and minimal impact on the community (e.g., HVAC problem in an Academic Building, ITSD failure).
+Typically handled by campus or local resources without requiring emergency notification or extensive coordination.
+Level 2: Disaster
+
+Widespread and severe damage, with significant impact on the community (e.g., earthquakes, hurricanes).
+Requires considerable coordination between campus and local resources, with potential involvement of state and federal authorities.
+Level 3: Major Disaster
+
+Catastrophic event involving the entire campus and surrounding community, requiring immediate resolution beyond the capabilities of campus and local resources (e.g., major hurricane, act of terrorism).
+Typically necessitates state and federal assistance, with extensive coordination and response efforts.
+Level 4: Catastrophe
+
+Extremely severe event with massive damage and loss of life (e.g., 1 million to 10 million fatalities).
+Requires a comprehensive and coordinated response effort involving multiple levels of government, emergency services, and international organizations.
+Level 5: Extinction
+
+Event with catastrophic consequences, potentially leading to partial or full extinction (e.g., fatalities exceeding 1 billion).
+Would require an unprecedented and global response effort, involving international cooperation, scientific expertise, and massive resource allocation.
+
+Note that these categories are based on the search results and may not be exhaustive or universally accepted. Additionally, the specific characteristics and requirements for each level may vary depending on the context and location.
+

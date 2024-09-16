@@ -1,0 +1,38 @@
+Natural & Man-Made Disaster Categories
+
+--Natural Disasters
+    --Geophysical Disasters
+        Earthquakes
+        Volcanic eruptions
+        Tsunamis
+    --Meteorological Disasters
+        Severe storms
+        Floods
+        Wildfires
+        Heatwaves
+    --Biological Disasters
+        Pandemics (e.g., infectious disease outbreaks)
+    --Environmental Disasters
+        Droughts
+        Landslides
+        Avalanches
+
+--Man-Made Disasters
+    --Human-Caused Hazards
+        Civil unrest (e.g., riots, sabotage)
+        Nuclear and radiation accidents
+        Power failures
+    --Technological Disasters
+        Industrial accidents (e.g., chemical spills, explosions)
+        Transportation accidents (e.g., plane crashes, train derailments)
+        Cyber-attacks
+    --Environmental Disasters
+        Pollution (e.g., smog, acid rain)
+        Hazardous materials exposures
+    --Conflict-Related Disasters
+        War
+        Terrorism
+        Bioterrorism
+
+
+Note that some disasters may have both natural and man-made components, such as a hurricane made worse by human-induced climate change or a flood caused by human activities like deforestation. Additionally, some disasters may be classified under multiple categories (e.g., a wildfire caused by a combination of natural and human factors).
