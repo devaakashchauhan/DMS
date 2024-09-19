@@ -9,14 +9,22 @@ import Home from './pages/Home.jsx'
 import Disaster from './pages/Disaster.jsx'
 import Contact from './pages/Contact.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import SpecificDisaster from './pages/SpecificDisaster.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} >
+
       <Route path="" element={<Home />} />
-      <Route path="disaster/" element={<Disaster />} />
+      <Route path="disasters/" element={<Disaster />} >
+
+        <Route path='disaster:id/' element={<SpecificDisaster />} />
+      </Route>
+
+
       <Route path="contact/" element={<Contact />} />
       <Route path="dashboard/" element={<Dashboard />} />
+
     </Route>
   )
 )
