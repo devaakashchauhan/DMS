@@ -1,6 +1,6 @@
 Natural & Man-Made Disaster Categories
 
---Natural Disasters
+--Natural Disasters => A natural disaster is an event caused by a natural hazard, which refers to a natural process or phenomenon that can result in loss of life, property damage, and environmental impact.
     --Geophysical Disasters
         Earthquakes
         Volcanic eruptions
@@ -17,7 +17,7 @@ Natural & Man-Made Disaster Categories
         Landslides
         Avalanches
 
---Man-Made Disasters
+--Man-Made Disasters =>Man-made disasters occur when human actions, negligence, or errors lead to catastrophic consequences.
     --Human-Caused Hazards
         Civil unrest (e.g., riots, sabotage)
         Nuclear and radiation accidents

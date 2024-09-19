@@ -1,4 +1,6 @@
 import React from 'react'
+import heroBG from "../assets/Image/heroBG.jpg"
+
 
 function HeroSection() {
     return (
@@ -6,10 +8,7 @@ function HeroSection() {
             <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
                 <div
                     className="absolute top-0 w-full h-full bg-center bg-cover"
-                    style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
-                    }}
+                    style={{ backgroundImage: `url(${heroBG})` }}
                 >
                     <span
                         id="blackOverlay"
@@ -21,13 +20,9 @@ function HeroSection() {
                         <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                             <div className="pr-12">
                                 <h1 className="text-white font-semibold text-5xl">
-                                    Your story starts with us.
+                                    “One Step Ahead: Preparedness for a Safer Tomorrow”
                                 </h1>
-                                <p className="mt-4 text-lg text-blueGray-200">
-                                    This is a simple example of a Landing Page you can build
-                                    using Notus React. It features multiple CSS components based
-                                    on the Tailwind CSS design system.
-                                </p>
+
                             </div>
                         </div>
                     </div>

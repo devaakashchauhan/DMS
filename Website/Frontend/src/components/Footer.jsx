@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
@@ -29,7 +30,7 @@ function Footer() {
                         <div className="w-full lg:w-6/12 px-4">
                             <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
                             <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                                Find us on any of these platforms, we respond 1-2 business days.
+                                Find us on any of these platforms, we respond 1-2 working hours.
                             </h5>
                             <div className="mt-6 lg:mb-0 mb-6">
                                 <button
@@ -44,12 +45,7 @@ function Footer() {
                                 >
                                     <i className="fab fa-facebook-square"></i>
                                 </button>
-                                <button
-                                    className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                                    type="button"
-                                >
-                                    <i className="fab fa-dribbble"></i>
-                                </button>
+
                                 <button
                                     className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                                     type="button"
@@ -66,36 +62,36 @@ function Footer() {
                                     </span>
                                     <ul className="list-unstyled">
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://www.creative-tim.com/presentation?ref=nr-footer"
+                                                to="/"
                                             >
-                                                About Us
-                                            </a>
+                                                Home
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://blog.creative-tim.com?ref=nr-footer"
+                                                to="disaster/"
                                             >
-                                                Blog
-                                            </a>
+                                                Disaster
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://www.github.com/creativetimofficial?ref=nr-footer"
+                                                to="contact/"
                                             >
-                                                Github
-                                            </a>
+                                                Contact
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://www.creative-tim.com/bootstrap-themes/free?ref=nr-footer"
+                                                to="dashboard/"
                                             >
-                                                Free Products
-                                            </a>
+                                                Dashboard
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -104,38 +100,24 @@ function Footer() {
                                         Other Resources
                                     </span>
                                     <ul className="list-unstyled">
+
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://github.com/creativetimofficial/notus-react/blob/main/LICENSE.md?ref=nr-footer"
-                                            >
-                                                MIT License
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/terms?ref=nr-footer"
+                                                to="#"
                                             >
                                                 Terms & Conditions
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a
+                                            <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/privacy?ref=nr-footer"
+                                                to="#"
                                             >
                                                 Privacy Policy
-                                            </a>
+                                            </Link>
                                         </li>
-                                        <li>
-                                            <a
-                                                className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                href="https://creative-tim.com/contact-us?ref=nr-footer"
-                                            >
-                                                Contact Us
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>

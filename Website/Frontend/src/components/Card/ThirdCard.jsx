@@ -1,7 +1,6 @@
 import React from 'react'
-import manMade from "../../assets/Image/manMade.jpg"
-
-function LeftCardInfo() {
+import both from "../../assets/Image/both.jpg"
+function ThirdCard() {
     return (
         <>
             <section className="relative py-20">
@@ -27,15 +26,21 @@ function LeftCardInfo() {
 
                 <div className="container mx-auto px-4">
                     <div className="items-center flex flex-wrap">
-
+                        <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
+                            <img
+                                alt="..."
+                                className="max-w-full rounded-lg shadow-lg"
+                                src={both}
+                            />
+                        </div>
                         <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                             <div className="md:pr-12">
                                 {/* <div className="text-lightBlue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-lightBlue-300">
                                     <i className="fas fa-rocket text-xl"></i>
                                 </div> */}
-                                <h3 className="text-3xl font-semibold">Man-Made Disasters</h3>
+                                <h3 className="text-3xl font-semibold">Natural and Man-Made (Both)</h3>
                                 <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-                                    Man-made disasters occur when human actions, negligence, or errors lead to catastrophic consequences.
+                                    A hurricane made worse by human-induced climate change or a flood caused by human activities like deforestation. Additionally, some disasters may be classified under multiple categories.
                                 </p>
                                 <ul className="list-none mt-6">
                                     <li className="py-2">
@@ -47,7 +52,7 @@ function LeftCardInfo() {
                                             </div>
                                             <div>
                                                 <h4 className="text-blueGray-500">
-                                                    Human-Caused Hazards
+                                                    Hurricane
                                                 </h4>
                                             </div>
                                         </div>
@@ -61,7 +66,7 @@ function LeftCardInfo() {
                                             </div>
                                             <div>
                                                 <h4 className="text-blueGray-500">
-                                                    Technological Disasters
+                                                    Climate change
                                                 </h4>
                                             </div>
                                         </div>
@@ -75,20 +80,13 @@ function LeftCardInfo() {
                                             </div>
                                             <div>
                                                 <h4 className="text-blueGray-500">
-                                                    Conflict-Related Disasters
+                                                    Flood
                                                 </h4>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
-                            <img
-                                alt="..."
-                                className="max-w-full rounded-lg shadow-lg"
-                                src={manMade}
-                            />
                         </div>
                     </div>
                 </div>
@@ -97,4 +95,4 @@ function LeftCardInfo() {
     )
 }
 
-export default LeftCardInfo
+export default ThirdCard

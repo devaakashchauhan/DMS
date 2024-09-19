@@ -10,12 +10,11 @@ function CategoryInfo() {
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                 <div className="px-4 py-5 flex-auto">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                                        <i className="fas fa-award"></i>
+                                        <i className="fa-sharp-duotone fa-solid fa-house-chimney-crack" ></i>
                                     </div>
-                                    <h6 className="text-xl font-semibold">Awarded Agency</h6>
+                                    <h6 className="text-xl font-semibold">Natural Disasters</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">
-                                        Divide details about your product or agency work into
-                                        parts. A paragraph describing a feature will be enough.
+                                        A natural disaster is an event caused by a natural hazard, which refers to a natural process or phenomenon that can result in loss of life, property damage, and environmental impact.
                                     </p>
                                 </div>
                             </div>
@@ -27,10 +26,9 @@ function CategoryInfo() {
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                                         <i className="fas fa-retweet"></i>
                                     </div>
-                                    <h6 className="text-xl font-semibold">Free Revisions</h6>
+                                    <h6 className="text-xl font-semibold">Man-Made Disasters</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">
-                                        Keep you user engaged by providing meaningful information.
-                                        Remember that by this time, the user is curious.
+                                        Man-made disasters occur when human actions, negligence, or errors lead to catastrophic consequences.
                                     </p>
                                 </div>
                             </div>
@@ -42,10 +40,9 @@ function CategoryInfo() {
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
                                         <i className="fas fa-fingerprint"></i>
                                     </div>
-                                    <h6 className="text-xl font-semibold">Verified Company</h6>
+                                    <h6 className="text-xl font-semibold">Natural and Man-Made (Both)</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">
-                                        Write a few lines about each one. A paragraph describing a
-                                        feature will be enough. Keep you user engaged!
+                                        A hurricane made worse by human-induced climate change or a flood caused by human activities like deforestation. Additionally, some disasters may be classified under multiple categories.
                                     </p>
                                 </div>
                             </div>
