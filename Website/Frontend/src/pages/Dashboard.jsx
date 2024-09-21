@@ -1,8 +1,16 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import Sidebar from '../components/Sidebar.jsx'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <Sidebar />
+      <div className="relative md:ml-64">
+        <Outlet />
+      </div >
+
+    </>
   )
 }
 

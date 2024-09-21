@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import natural from "../../assets/Image/natural.jpg"
 import manMade from "../../assets/Image/manMade.jpg"
 import both from "../../assets/Image/both.jpg"
 import { Link } from 'react-router-dom'
 
-function DisasterInfo({ address,
+
+function AdminDisasterCardCOM({ address,
     city,
     country,
     createdAt,
@@ -15,9 +16,6 @@ function DisasterInfo({ address,
     typeofDisaster,
     updatedAt,
     _id, }) {
-
-
-
     return (
         <>
             <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
@@ -51,7 +49,7 @@ function DisasterInfo({ address,
                         </p>
                     </blockquote>
                     <div className="pl-6 pb-3">
-                        <Link to={`/carddetails/${_id}`}>
+                        <Link to={`/dashboard/details/${_id}`}>
                             <button
                                 className="bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                 type="button"
@@ -66,4 +64,4 @@ function DisasterInfo({ address,
     )
 }
 
-export default DisasterInfo
+export default AdminDisasterCardCOM

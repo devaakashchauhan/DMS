@@ -18,19 +18,33 @@ const disasterSchema = new Schema(
     status: {
       type: String,
       trim: true,
-
+      default: "Submit",
       lowercase: true,
     },
-    info: {
+    description: {
       type: String,
       trim: true,
 
       lowercase: true,
     },
-    place: {
+    address: {
       type: String,
       trim: true,
-
+      lowercase: true,
+    },
+    city: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
+    country: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
+    pincode: {
+      type: String,
+      trim: true,
       lowercase: true,
     },
   },

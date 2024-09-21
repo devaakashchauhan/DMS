@@ -3,8 +3,7 @@ import natural from "../assets/Image/natural.jpg"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function SpecificDisaster() {
-
+function AdminDisasterDetailCom() {
     const { id } = useParams();
 
     const baseUrl = import.meta.env.VITE_USED_URL
@@ -236,4 +235,4 @@ function SpecificDisaster() {
     )
 }
 
-export default SpecificDisaster
+export default AdminDisasterDetailCom

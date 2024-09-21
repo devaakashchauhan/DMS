@@ -41,6 +41,14 @@ function Navbar() {
               </li>
               <li className="flex items-center">
                 <Link
+                  to="report/"
+                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
+                >
+                  Report
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link
                   to="disasters/"
                   className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
                 >
@@ -57,7 +65,7 @@ function Navbar() {
               </li>
               <li className="flex items-center">
                 <Link
-                  to="dashboard/"
+                  to="dashboard/disaster/"
                   className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
                 >
                   Dashboard

@@ -1,23 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DisasterInfo from '../components/Card/DisasterInfo.jsx'
-import { useParams } from 'react-router-dom'
+import axios from 'axios'
+
 
 function Disaster() {
-  const disasterId = useParams()
+
+  const [allDisaster, setAllDisaster] = useState([])
+  const baseUrl = import.meta.env.VITE_USED_URL
+  const apiversion = import.meta.env.VITE_API_VERSION
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/${apiversion}/user/alldisaster`)
+      .then((response) => {
+        console.log(response.data.data.allDisaster);
+
+        setAllDisaster(response.data.data.allDisaster)
+      })
+      .catch((error) => {
+        console.log(error);
+
+      })
+  }, [])
 
   return (
     <>
-
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center mt-32">
-          <DisasterInfo />
-          <DisasterInfo />
-          <DisasterInfo />
-          <DisasterInfo />
-          <DisasterInfo />
-          <DisasterInfo />
+
+          {allDisaster.map((eachCard) => (
+
+            <DisasterInfo
+              key={eachCard._id}
+              address={eachCard.address}
+              city={eachCard.city}
+              country={eachCard.country}
+              createdAt={eachCard.createdAt}
+              description={eachCard.description}
+              level={eachCard.level}
+              pincode={eachCard.pincode}
+              statu={eachCard.status}
+              typeofDisaster={eachCard.typeofDisaster}
+              updatedAt={eachCard.updatedAt}
+              _id={eachCard._id}
+            />
+          ))}
+
         </div>
       </div>
+
     </>
   )
 }
