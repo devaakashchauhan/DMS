@@ -22,15 +22,18 @@ app.use(cookieParser());
 
 // import routes
 import { errorHandler } from "./middlewares/error.middleware.js";
-import healthCheckRouter from "./routes/healthcheck.routes.js";
 
-// user
+// Admin
 import adminRouter from "./routes/admin.routes.js";
+
+// User
+import userRouter from "./routes/user.routes.js";
 
 // routes
 app.use(errorHandler);
 
 // all user related
 app.use(`/${apiVersion}/admin`, adminRouter);
+app.use(`/${apiVersion}/user`, userRouter);
 
 export { app };

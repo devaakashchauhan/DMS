@@ -16,7 +16,7 @@ const adminSchema = new Schema(
       type: String,
       required: [true, "password is requried"],
     },
-    refreshToken: {
+    accessToken: {
       type: String,
     },
   },
@@ -28,7 +28,6 @@ adminSchema.plugin(mongooseAggregatePaginate);
 
 // genrate access token
 adminSchema.methods.genrateAccessToken = function () {
-  // short live token
   return jwt.sign(
     {
       _id: this._id,
@@ -37,21 +36,6 @@ adminSchema.methods.genrateAccessToken = function () {
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
-    },
-  );
-};
-
-// genrate refresh token
-adminSchema.methods.genrateRefreshToken = function () {
-  // short live token
-  return jwt.sign(
-    {
-      _id: this._id,
-      username: this.username,
-    },
-    process.env.REFRESH_TOKEN_SECRET,
-    {
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
     },
   );
 };

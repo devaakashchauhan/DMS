@@ -3,28 +3,22 @@ import { apiError } from "../utils/apiError.utils.js";
 import { apiResponse } from "../utils/apiResponse.utils.js";
 import dotenv from "dotenv";
 
-// all model
 import { Admin } from "../models/admin.model.js";
 import { Disaster } from "../models/disaster.model.js";
-import { DisasterType } from "../models/disasterType.model.js";
-import { Status } from "../models/status.model.js";
-import { Level } from "../models/level.model.js";
 
 dotenv.config();
 
-// guest genrate refresh and access token
-const genrateAccessAndRefreshToken = async (guestId) => {
+const genrateAccessAndRefreshToken = async (admintId) => {
   try {
-    const admin = await Admin.findById(guestId);
+    const admin = await Admin.findById(admintId);
     if (!admin) {
-      throw new apiError(400, "Invalid guest user !");
+      throw new apiError(400, "Invalid admin!");
     }
     const accessToken = admin.genrateAccessToken();
-    const refreshToken = admin.genrateRefreshToken();
 
-    admin.refreshToken = refreshToken;
+    admin.accessToken = accessToken;
     await admin.save({ validateBeforeSave: false });
-    return { accessToken, refreshToken };
+    return accessToken;
   } catch (error) {
     throw new apiError(
       500,
@@ -33,7 +27,6 @@ const genrateAccessAndRefreshToken = async (guestId) => {
   }
 };
 
-//guest login
 const loginAdmin = asyncHandler(async (req, res) => {
   const { username, password } = req.body;
 
@@ -44,25 +37,18 @@ const loginAdmin = asyncHandler(async (req, res) => {
     throw new apiError(400, "password is requried !");
   }
 
-  const findAdmin = await Admin.findOne({ username });
+  const findAdmin = await Admin.findOne({
+    username,
+    password,
+  });
 
   if (!findAdmin) {
     throw new apiError(400, "invalid username");
   }
 
-  const isPasswordValid = await findAdmin.isPasswordCorrect(password);
+  const accessToken = await genrateAccessAndRefreshToken(findAdmin._id);
 
-  if (!isPasswordValid) {
-    throw new apiError(401, "Invalid password");
-  }
-
-  const { accessToken, refreshToken } = await genrateAccessAndRefreshToken(
-    findAdmin._id,
-  );
-
-  const loggedInAdmin = await Admin.findById(findAdmin._id).select(
-    "-password,-refreshToken",
-  );
+  const loggedInAdmin = await Admin.findById(findAdmin._id).select("-password");
 
   const options = {
     httpOnly: true,
@@ -72,17 +58,16 @@ const loginAdmin = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .cookie("accessToken", accessToken, options)
-    .cookie("refreshToken", refreshToken, options)
+
     .json(
       new apiResponse(
         200,
-        { admin: loggedInAdmin, accessToken, refreshToken },
+        { admin: loggedInAdmin },
         "admin Logged In successfully.",
       ),
     );
 });
 
-//guest logout
 const logoutAdmin = asyncHandler(async (req, res) => {
   const admin = await Admin.findByIdAndUpdate(
     req.admin._id,
@@ -108,7 +93,6 @@ const logoutAdmin = asyncHandler(async (req, res) => {
     .json(new apiResponse(200, {}, "user logout successfully !"));
 });
 
-// get current guest
 const getCurrentAdmin = asyncHandler(async (req, res) => {
   return res
     .status(200)
@@ -116,112 +100,84 @@ const getCurrentAdmin = asyncHandler(async (req, res) => {
 });
 
 // all disaster controller
+const getAllDisaster = asyncHandler(async (req, res) => {
+  const allDisaster = await Disaster.find();
 
-const disasterType = asyncHandler(async (req, res) => {
-  const { type, des } = req.body;
-
-  if (type.trim() == "") {
-    throw new apiError(400, "type is required!");
+  if (!allDisaster) {
+    throw new apiError(500, "Something gone wrong while featch of disaster !");
   }
 
-  if (des.trim() == "") {
-    throw new apiError(400, "des is required!");
+  res
+    .status(200)
+    .json(
+      new apiResponse(200, { allDisaster }, "All Diasater get successfully."),
+    );
+});
+
+const deleteDisaster = asyncHandler(async (req, res) => {
+  const { disasterId } = req.body;
+
+  if (disasterId.trim() == "") {
+    throw new apiError(400, "disaster Id is required!");
   }
 
-  const existType = await DisasterType.findOne({ disasterType: type });
+  const existDisaster = await Disaster.findById(disasterId);
 
-  if (existType) {
-    throw new apiError(400, `${type} is already have!`);
+  if (!existDisaster) {
+    throw new apiError(400, "Invalid disaster!");
   }
 
-  const createdType = await DisasterType.create({
-    disasterType: type,
-    des: des,
-  });
+  const deletedDisaster = await Disaster.findByIdAndDelete(disasterId);
 
-  if (!createdType) {
+  if (!deletedDisaster) {
     throw new apiError(
       500,
-      "Something gone wrong while creating type of disaster !",
+      "Something gone wrong while deleting of disaster !",
     );
   }
 
   res
     .status(200)
-    .json(new apiResponse(200, {}, "Diasater type created successfully."));
+    .json(new apiResponse(200, {}, "Diasater  deleting successfully."));
 });
 
-const statusType = asyncHandler(async (req, res) => {
-  const { status, des } = req.body;
+const updateStatus = asyncHandler(async (req, res) => {
+  const { disasterId, status } = req.body;
 
+  if (disasterId.trim() == "") {
+    throw new apiError(400, "disaster Id is required!");
+  }
   if (status.trim() == "") {
-    throw new apiError(400, "status is required!");
+    throw new apiError(400, "disaster status is required!");
   }
 
-  if (des.trim() == "") {
-    throw new apiError(400, "des is required!");
+  const existDisaster = await Disaster.findById(disasterId);
+
+  if (!existDisaster) {
+    throw new apiError(400, "Invalid disaster!");
   }
 
-  const existStatus = await Status.findOne({ status: status });
+  const deletedDisaster = await Disaster.findByIdAndUpdate(
+    disasterId,
+    {
+      $set: {
+        status,
+      },
+    },
+    { new: true },
+  );
 
-  if (existStatus) {
-    throw new apiError(400, `${status} is already have!`);
-  }
-
-  const createdStatus = await Status.create({
-    status: status,
-    des: des,
-  });
-
-  if (!createdStatus) {
+  if (!deletedDisaster) {
     throw new apiError(
       500,
-      "Something gone wrong while creating type of status !",
+      "Something gone wrong while updating status of disaster !",
     );
   }
 
   res
     .status(200)
-    .json(new apiResponse(200, {}, "Diasater status created successfully."));
+    .json(new apiResponse(200, {}, "Diasater status updated successfully."));
 });
-
-const levelType = asyncHandler(async (req, res) => {
-  const { level, des } = req.body;
-
-  if (level.trim() == "") {
-    throw new apiError(400, "level is required!");
-  }
-
-  if (des.trim() == "") {
-    throw new apiError(400, "des is required!");
-  }
-
-  const existLevel = await Level.findOne({ level: level });
-
-  if (existLevel) {
-    throw new apiError(400, `${level} is already have!`);
-  }
-
-  const createdLevel = await Level.create({
-    level: level,
-    des: des,
-  });
-
-  if (!createdLevel) {
-    throw new apiError(
-      500,
-      "Something gone wrong while creating type of level !",
-    );
-  }
-
-  res
-    .status(200)
-    .json(new apiResponse(200, {}, "Diasater level created successfully."));
-});
-
-const getAllDisaster = asyncHandler(async (req, res) => {});
-const deleteDisaster = asyncHandler(async (req, res) => {});
-const updateStatus = asyncHandler(async (req, res) => {});
 
 export {
   loginAdmin,
@@ -230,7 +186,4 @@ export {
   getAllDisaster,
   deleteDisaster,
   updateStatus,
-  disasterType,
-  statusType,
-  levelType,
 };

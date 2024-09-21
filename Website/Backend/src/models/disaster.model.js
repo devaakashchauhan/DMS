@@ -4,24 +4,34 @@ import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const disasterSchema = new Schema(
   {
     typeofDisaster: {
-      type: Schema.Types.ObjectId,
-      ref: "DisasterType",
+      type: String,
+      trim: true,
+
+      lowercase: true,
     },
     level: {
-      type: Schema.Types.ObjectId,
-      ref: "Level",
+      type: String,
+      trim: true,
+
+      lowercase: true,
     },
     status: {
-      type: Schema.Types.ObjectId,
-      ref: "Status",
+      type: String,
+      trim: true,
+
+      lowercase: true,
     },
     info: {
       type: String,
       trim: true,
+
+      lowercase: true,
     },
     place: {
       type: String,
       trim: true,
+
+      lowercase: true,
     },
   },
   { timestamps: true },

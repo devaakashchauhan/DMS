@@ -17,8 +17,7 @@ const router = createBrowserRouter(
 
       <Route path="" element={<Home />} />
       <Route path="disasters/" element={<Disaster />} >
-
-        <Route path='disaster:id/' element={<SpecificDisaster />} />
+        <Route path='details:id/' element={<SpecificDisaster />} />
       </Route>
 
 
