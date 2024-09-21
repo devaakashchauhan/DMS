@@ -1,5 +1,6 @@
 import React from 'react'
 import ContactCard from '../components/Card/ContactCard'
+import importantContact from "../constant.js"
 
 function Contact() {
     return (
@@ -25,11 +26,17 @@ function Contact() {
             </section>
             <div className="container mx-auto px-4">
                 <div className="flex flex-wrap items-center mt-32">
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
-                    <ContactCard />
+
+
+                    {importantContact.map((ele) => (
+                        <ContactCard
+                            key={ele.id}
+                            name={ele.name}
+                            phone={ele.phone}
+                            des={ele.des}
+                            imagePath={ele.imagePath}
+                        />
+                    ))}
 
                 </div>
             </div>
