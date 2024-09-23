@@ -10,13 +10,12 @@ function AdminDisaster() {
     useEffect(() => {
         axios.get(`${baseUrl}/${apiversion}/user/alldisaster`)
             .then((response) => {
-                console.log(response.data.data.allDisaster);
+                // console.log(response.data.data.allDisaster);
 
                 setAllDisaster(response.data.data.allDisaster)
             })
             .catch((error) => {
-                console.log(error);
-
+                console.log("Error :- ", error);
             })
     }, [])
     return (

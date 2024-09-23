@@ -63,14 +63,24 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
-              <li className="flex items-center">
-                <Link
-                  to="dashboard/disaster/"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
-                >
-                  Dashboard
-                </Link>
-              </li>
+              {localStorage.getItem("role") ?
+                <li className="flex items-center">
+                  <Link
+                    to="dashboard/disaster/"
+                    className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
+                  >
+                    Dashboard
+                  </Link>
+                </li> : <li className="flex items-center">
+                  <Link
+                    to="adminlogin/"
+                    className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
+                  >
+                    Login
+                  </Link>
+                </li>
+              }
+
             </ul>
           </div>
         </div>

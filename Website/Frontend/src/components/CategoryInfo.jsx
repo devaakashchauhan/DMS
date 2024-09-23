@@ -10,7 +10,8 @@ function CategoryInfo() {
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                 <div className="px-4 py-5 flex-auto">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                                        <i className="fa-sharp-duotone fa-solid fa-house-chimney-crack" ></i>
+
+                                        <i class="fa-solid fa-cloud-showers-water"></i>
                                     </div>
                                     <h6 className="text-xl font-semibold">Natural Disasters</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">
@@ -24,7 +25,7 @@ function CategoryInfo() {
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                 <div className="px-4 py-5 flex-auto">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
-                                        <i className="fas fa-retweet"></i>
+                                        <i class="fa-solid fa-biohazard"></i>
                                     </div>
                                     <h6 className="text-xl font-semibold">Man-Made Disasters</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">
@@ -38,7 +39,7 @@ function CategoryInfo() {
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                                 <div className="px-4 py-5 flex-auto">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                                        <i className="fas fa-fingerprint"></i>
+                                        <i class="fa-solid fa-house-fire"></i>
                                     </div>
                                     <h6 className="text-xl font-semibold">Natural and Man-Made (Both)</h6>
                                     <p className="mt-2 mb-4 text-blueGray-500">

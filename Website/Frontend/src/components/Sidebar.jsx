@@ -1,8 +1,27 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Sidebar() {
+
+    const navigate = useNavigate()
     const [collapseShow, setCollapseShow] = useState("hidden");
+    const baseUrl = import.meta.env.VITE_USED_URL
+    const apiVersion = import.meta.env.VITE_API_VERSION
+
+    const handelLogout = () => {
+        axios.get(`${baseUrl}/${apiVersion}/admin/logout`, {
+            withCredentials: true  // include cookies in requests
+        })
+            .then((response) => {
+                // console.log(response);
+                localStorage.clear()
+                navigate("/")
+            })
+            .catch((error) => {
+                console.log("Error :- ", error);
+            })
+    }
     return (
         <>
             <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -63,7 +82,7 @@ function Sidebar() {
                         <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                             <li className="items-center">
                                 <Link className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" to="/dashboard/disaster"  >
-                                    All Disaster
+                                    Disaster
                                 </Link>
                             </li>
                         </ul>
@@ -71,10 +90,10 @@ function Sidebar() {
                         <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">Auth</h6>
                         <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                             <li className="items-center">
-                                <Link className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" to="/logout" >
-                                    <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>
+                                <button className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" onClick={handelLogout} >
+
                                     Logout
-                                </Link>
+                                </button>
                             </li>
                         </ul>
                     </div>

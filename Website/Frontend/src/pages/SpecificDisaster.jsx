@@ -20,7 +20,7 @@ function SpecificDisaster() {
                 setDisasterInfo(response.data.data[0])
             })
             .catch((error) => {
-                console.log(error);
+                console.log("Error :- ", error);
             })
     }, [])
     return (

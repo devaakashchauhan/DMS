@@ -13,6 +13,7 @@ import SpecificDisaster from './pages/SpecificDisaster.jsx';
 import AdminDisaster from './pages/AdminDisaster.jsx';
 import AdminDisasterDetailCom from './components/AdminDisasterDetailCom.jsx';
 import DisasterReport from './pages/DisasterReport.jsx';
+import Login from './pages/Login.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="carddetails/:id" element={<SpecificDisaster />} />
       <Route path="contact/" element={<Contact />} />
       <Route path="report/" element={<DisasterReport />} />
+      <Route path="adminlogin/" element={<Login />} />
     </Route>,
 
     <Route path="dashboard/" element={<Dashboard />} >

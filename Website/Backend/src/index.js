@@ -24,7 +24,7 @@ app.use(
         logger.info(JSON.stringify(logObject));
       },
     },
-  })
+  }),
 );
 
 connectDB()

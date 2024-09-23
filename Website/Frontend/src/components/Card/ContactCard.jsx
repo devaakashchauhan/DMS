@@ -9,7 +9,7 @@ function ContactCard({ name, phone, des, imagePath }) {
                     <img
                         alt="..."
                         src={imagePath}
-                        className="w-full  align-middle rounded-t-lg"
+                        className="w-full  align-middle rounded-t-lg h-48"
                     />
                     <blockquote className="relative p-8 mb-4">
                         <svg
@@ -29,7 +29,7 @@ function ContactCard({ name, phone, des, imagePath }) {
                         <h4 className="text-xl font-bold text-white">
                             {phone}
                         </h4>
-                        <p className="text-md font-light mt-2 text-white">
+                        <p className="text-md font-light mt-2 text-white h-24">
                             {des}
                         </p>
                     </blockquote>

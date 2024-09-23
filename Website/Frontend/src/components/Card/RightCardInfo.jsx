@@ -36,9 +36,7 @@ function RightCardInfo() {
                         </div>
                         <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                             <div className="md:pr-12">
-                                {/* <div className="text-lightBlue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-lightBlue-300">
-                                    <i className="fas fa-rocket text-xl"></i>
-                                </div> */}
+
                                 <h3 className="text-3xl font-semibold">Natural Disasters</h3>
                                 <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                                     A natural disaster is an event caused by a natural hazard, which refers to a natural process or phenomenon that can result in loss of life, property damage, and environmental impact.
@@ -48,7 +46,7 @@ function RightCardInfo() {
                                         <div className="flex items-center">
                                             <div>
                                                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                                                    <i className="fas fa-fingerprint"></i>
+
                                                 </span>
                                             </div>
                                             <div>
@@ -62,7 +60,7 @@ function RightCardInfo() {
                                         <div className="flex items-center">
                                             <div>
                                                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                                                    <i className="fab fa-html5"></i>
+
                                                 </span>
                                             </div>
                                             <div>
@@ -76,7 +74,7 @@ function RightCardInfo() {
                                         <div className="flex items-center">
                                             <div>
                                                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                                                    <i className="far fa-paper-plane"></i>
+
                                                 </span>
                                             </div>
                                             <div>

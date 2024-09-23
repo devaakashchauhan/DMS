@@ -19,7 +19,6 @@ const disasterSchema = new Schema(
       type: String,
       trim: true,
       default: "Submit",
-      lowercase: true,
     },
     description: {
       type: String,

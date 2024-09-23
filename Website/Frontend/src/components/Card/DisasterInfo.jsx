@@ -24,8 +24,8 @@ function DisasterInfo({ address,
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200">
                     <img
                         alt="..."
-                        src={typeofDisaster == "both" ? both : typeofDisaster == "natural" ? natural : typeofDisaster == "manmade" ? manMade : null}
-                        className="w-full align-middle rounded-t-lg"
+                        src={typeofDisaster == "both" ? both : typeofDisaster == "natural" ? natural : typeofDisaster == "manmade" ? manMade : both}
+                        className="w-full align-middle rounded-t-lg h-48"
                     />
                     <blockquote className="relative p-8 mb-4">
                         <svg

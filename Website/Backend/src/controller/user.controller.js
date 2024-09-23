@@ -22,8 +22,6 @@ const disasterEntry = asyncHandler(async (req, res) => {
     description,
   } = req.body;
 
-  console.log(req.body);
-
   if (typeofDisaster.trim() == "") {
     throw new apiError(400, "type is required!");
   }

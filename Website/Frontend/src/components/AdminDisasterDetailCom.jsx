@@ -2,26 +2,72 @@ import React, { useEffect, useState } from 'react'
 import natural from "../assets/Image/natural.jpg"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AdminDisasterDetailCom() {
     const { id } = useParams();
+    const navigate = useNavigate()
 
     const baseUrl = import.meta.env.VITE_USED_URL
     const apiversion = import.meta.env.VITE_API_VERSION
 
-
+    const [updateButton, setUpdateButton] = useState(false)
     const [DisasterInfo, setDisasterInfo] = useState({})
+    const [statusInput, setStatusInput] = useState({
+        "status": ""
+    })
+
+    const [disasterId, setDisasterId] = useState({
+        "disasterId": ""
+    })
+
+    const handelInputChange = (e) => {
+        setStatusInput({ ...statusInput, [e.target.name]: e.target.value })
+        setUpdateButton(true)
+        // if (DisasterInfo.status == statusInput.status) {
+        //     setUpdateButton(false)
+        // }
+    }
 
 
     useEffect(() => {
         axios.get(`${baseUrl}/${apiversion}/user/onedisaster/${id}`,)
             .then((response) => {
                 setDisasterInfo(response.data.data[0])
+                setDisasterId({ "disasterId": response.data.data[0]._id })
             })
             .catch((error) => {
-                console.log(error);
+                console.log("Error :- ", error);
             })
-    }, [])
+    }, [statusInput])
+
+    const handelDelete = () => {
+        axios.post(`${baseUrl}/${apiversion}/admin/deletedisaster`, disasterId, {
+            withCredentials: true  // include cookies in requests
+        })
+            .then((response) => {
+                // console.log(response);
+                navigate("/dashboard/disaster/")
+            })
+            .catch((error) => {
+                console.log("Error :- ", error);
+            })
+    }
+
+    const handelStatusChange = () => {
+        axios.post(`${baseUrl}/${apiversion}/admin/updatestatus`, { ...disasterId, ...statusInput }, {
+            withCredentials: true  // include cookies in requests
+        })
+            .then((response) => {
+                // console.log(response);
+                setStatusInput({ "status": "" })
+                setUpdateButton(false)
+            })
+            .catch((error) => {
+                console.log("Error :- ", error);
+            })
+    }
+
     return (
         <>
             <main className="profile-page">
@@ -108,9 +154,13 @@ function AdminDisasterDetailCom() {
                                                 >
                                                     Disaster Status
                                                 </label>
-                                                <h1 defaultValue="1" name='level' className="uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+                                                {/* <h1 defaultValue="1" name='level' className="uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
                                                     {DisasterInfo.status}
-                                                </h1>
+                                                </h1> */}
+                                                <select defaultValue={DisasterInfo.status} name='status' onChange={handelInputChange} className=" uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+                                                    <option value={DisasterInfo.status}>{DisasterInfo.status}</option>
+                                                    <option value={DisasterInfo.status == "Accept" ? "Submit" : "Accept"}>{DisasterInfo.status == "Accept" ? "Submit" : "Accept"}</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -225,6 +275,25 @@ function AdminDisasterDetailCom() {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="pl-6 pb-3">
+
+                                        <button
+                                            className="bg-red-500 hover:bg-red-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                            type="button"
+                                            onClick={handelDelete}
+                                        >
+                                            Delete
+                                        </button>
+                                        {!updateButton ? null : <button
+                                            className="bg-sky-500 hover:bg-sky-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                            type="button"
+                                            onClick={handelStatusChange}
+                                        >
+                                            Update
+                                        </button>}
+
+                                    </div>
+
                                 </form>
                             </div>
                         </div>

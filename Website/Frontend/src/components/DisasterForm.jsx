@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 function DisasterForm() {
 
     const baseURL = import.meta.env.VITE_USED_URL
     const version = import.meta.env.VITE_API_VERSION
+
+    const navigate = useNavigate()
 
     const [disasterInfo, setDisasterInfo] = useState({
         typeofDisaster: "",
@@ -24,10 +27,11 @@ function DisasterForm() {
     const handelRequest = () => {
         axios.post(`${baseURL}/${version}/user/disasterentry`, disasterInfo)
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
+                navigate("/disasters/")
             })
             .catch((error) => {
-                console.log(error)
+                console.log("Error :- ", error);
             })
     }
 
@@ -103,8 +107,7 @@ function DisasterForm() {
                                     >
                                         Address
                                     </label>
-                                    <input
-                                        type="text"
+                                    <textarea
                                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Address"
                                         name="address"
