@@ -4,7 +4,7 @@ This is the frontend repository for the Disaster Management System. It is built 
 
 ## Table of Contents
 
-- [Project Structure](#project-structure)
+- [Frontend Structure](#frontend-structure)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Dependencies](#dependencies)

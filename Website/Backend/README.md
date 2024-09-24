@@ -4,12 +4,12 @@ This is the backend for the Disaster Management System. It is built with Node.js
 
 ## Table of Contents
 
-- [Project Structure](#project-structure)
+- [Backend Structure](#backend-structure)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Dependencies](#dependencies)
 
-## Project Structure
+## Backend Structure
 
 ```plaintext
 ├── node_modules
