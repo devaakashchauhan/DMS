@@ -6,17 +6,26 @@ This is the frontend repository for the Disaster Management System. It is built 
 
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Dependencies](#dependencies)
 - [Environment Variables](#environment-variables)
+- [Dependencies](#dependencies)
 
 ## Frontend Structure
 
 ```plaintext
 ├── node_modules
 ├── public
-│   └── index.html
+│   
 ├── src
 │   ├── assets
+│   |    ├── Image
+│   |         ├── ambulance.jpg
+│   |         ├── both.jpg
+│   |         ├── firestation.jpg
+│   |         ├── heroBG.jpg
+│   |         ├── manMade.jpg
+│   |         ├── natural.jpg
+│   |         ├── police.jpg
+│   |         ├── traffic.jpg
 │   ├── components
 │   │   ├── Card
 │   │   │   ├── AdminDisasterCardCOM.jsx
@@ -25,8 +34,7 @@ This is the frontend repository for the Disaster Management System. It is built 
 │   │   │   ├── LeftCardInfo.jsx
 │   │   │   ├── RightCardInfo.jsx
 │   │   │   ├── ThirdCard.jsx
-│   │   ├── Dropdown
-│   │   │   ├── AdminDisasterDetailCom.jsx
+│   │   ├── AdminDisasterDetailCom.jsx.
 │   │   ├── CategoryInfo.jsx
 │   │   ├── DisasterForm.jsx
 │   │   ├── Footer.jsx
@@ -34,7 +42,6 @@ This is the frontend repository for the Disaster Management System. It is built 
 │   │   ├── LoginCom.jsx
 │   │   ├── Navbar.jsx
 │   │   ├── Sidebar.jsx
-│   ├── conf
 │   ├── pages
 │   │   ├── AdminDisaster.jsx
 │   │   ├── Contact.jsx
@@ -44,12 +51,11 @@ This is the frontend repository for the Disaster Management System. It is built 
 │   │   ├── Home.jsx
 │   │   ├── Login.jsx
 │   │   ├── SpecificDisaster.jsx
-│   ├── utils
-│   │   ├── App.css
-│   │   ├── App.jsx
-│   │   ├── constant.js
-│   │   ├── index.css
-│   │   └── main.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── constant.js
+│   ├── index.css
+│   ├── main.jsx
 ├── .env
 ├── .env.sample
 ├── .gitignore
@@ -82,7 +88,7 @@ Next, install the dependencies using npm:
 npm install
 ```
 
-## Set up Environment Variables
+## Environment Variables
 
 Copy the .env.sample file to .env and provide the necessary values.
 
@@ -91,7 +97,12 @@ Copy the .env.sample file to .env and provide the necessary values.
 To start the development server, run:
 
 ```bash
-npm run dev
+ #BACKEND URL
+ VITE_PORT=""
+ VITE_API_VERSION=""
+ VITE_DEVELOPMENT_URL=""
+ VITE_DEPLOYMENT_URL=""
+ VITE_USED_URL=""
 ```
 
 ## Dependencies

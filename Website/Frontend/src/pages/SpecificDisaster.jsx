@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import natural from "../assets/Image/natural.jpg"
+import both from "../assets/Image/both.jpg"
+import manMade from "../assets/Image/manMade.jpg"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -30,7 +32,7 @@ function SpecificDisaster() {
                     <div
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                         style={{
-                            backgroundImage: "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')"
+                            backgroundImage: `url(${DisasterInfo.typeofDisaster == "both" ? both : DisasterInfo.typeofDisaster == "natural" ? natural : DisasterInfo.typeofDisaster == "manmade" ? manMade : both})`
                         }}
                     >
                         <span

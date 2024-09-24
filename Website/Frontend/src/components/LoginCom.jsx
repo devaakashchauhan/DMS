@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function LoginCom() {
@@ -12,6 +12,17 @@ function LoginCom() {
         username: "",
         password: ""
     })
+    const [loginButton, setloginButton] = useState(true)
+
+    useEffect(() => {
+        if (adminInfo.password.length > 0 && adminInfo.username.length > 0) {
+            setloginButton(false)
+        }
+        else {
+            setloginButton(true)
+        }
+    }, [adminInfo])
+
 
 
     const handelInputChange = (e) => {
@@ -102,6 +113,7 @@ function LoginCom() {
                             className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="button"
                             onClick={handelLogin}
+                            disabled={loginButton}
                         >
                             Login
                         </button>

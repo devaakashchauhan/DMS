@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import natural from "../assets/Image/natural.jpg"
+import manMade from "../assets/Image/manMade.jpg"
+import both from "../assets/Image/both.jpg"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -16,30 +18,37 @@ function AdminDisasterDetailCom() {
     const [statusInput, setStatusInput] = useState({
         "status": ""
     })
+    const [callApi, setcallApi] = useState(false)
 
     const [disasterId, setDisasterId] = useState({
         "disasterId": ""
     })
-
-    const handelInputChange = (e) => {
-        setStatusInput({ ...statusInput, [e.target.name]: e.target.value })
-        setUpdateButton(true)
-        // if (DisasterInfo.status == statusInput.status) {
-        //     setUpdateButton(false)
-        // }
-    }
-
 
     useEffect(() => {
         axios.get(`${baseUrl}/${apiversion}/user/onedisaster/${id}`,)
             .then((response) => {
                 setDisasterInfo(response.data.data[0])
                 setDisasterId({ "disasterId": response.data.data[0]._id })
+                setStatusInput({ "status": response.data.data[0].status })
             })
             .catch((error) => {
                 console.log("Error :- ", error);
             })
+    }, [callApi])
+
+    const handelInputChange = (e) => {
+        setStatusInput({ ...statusInput, [e.target.name]: e.target.value })
+    }
+
+    useEffect(() => {
+        if (statusInput.status == DisasterInfo.status) {
+            setUpdateButton(false)
+        } else if (statusInput.status != DisasterInfo.status) {
+            setUpdateButton(true)
+        }
     }, [statusInput])
+
+
 
     const handelDelete = () => {
         axios.post(`${baseUrl}/${apiversion}/admin/deletedisaster`, disasterId, {
@@ -60,8 +69,9 @@ function AdminDisasterDetailCom() {
         })
             .then((response) => {
                 // console.log(response);
-                setStatusInput({ "status": "" })
+                setcallApi(!callApi)
                 setUpdateButton(false)
+                navigate("/dashboard/disaster/")
             })
             .catch((error) => {
                 console.log("Error :- ", error);
@@ -75,7 +85,8 @@ function AdminDisasterDetailCom() {
                     <div
                         className="absolute top-0 w-full h-full bg-center bg-cover"
                         style={{
-                            backgroundImage: "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')"
+
+                            backgroundImage: `url(${DisasterInfo.typeofDisaster == "both" ? both : DisasterInfo.typeofDisaster == "natural" ? natural : DisasterInfo.typeofDisaster == "manmade" ? manMade : both})`
                         }}
                     >
                         <span
@@ -157,7 +168,7 @@ function AdminDisasterDetailCom() {
                                                 {/* <h1 defaultValue="1" name='level' className="uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
                                                     {DisasterInfo.status}
                                                 </h1> */}
-                                                <select defaultValue={DisasterInfo.status} name='status' onChange={handelInputChange} className=" uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+                                                <select name='status' onChange={handelInputChange} className=" uppercase border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
                                                     <option value={DisasterInfo.status}>{DisasterInfo.status}</option>
                                                     <option value={DisasterInfo.status == "Accept" ? "Submit" : "Accept"}>{DisasterInfo.status == "Accept" ? "Submit" : "Accept"}</option>
                                                 </select>
@@ -284,13 +295,13 @@ function AdminDisasterDetailCom() {
                                         >
                                             Delete
                                         </button>
-                                        {!updateButton ? null : <button
+                                        {updateButton ? <button
                                             className="bg-sky-500 hover:bg-sky-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                             type="button"
                                             onClick={handelStatusChange}
                                         >
                                             Update
-                                        </button>}
+                                        </button> : null}
 
                                     </div>
 

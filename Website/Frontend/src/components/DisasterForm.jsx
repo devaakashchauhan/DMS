@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
@@ -8,6 +8,7 @@ function DisasterForm() {
     const version = import.meta.env.VITE_API_VERSION
 
     const navigate = useNavigate()
+    const [submitButton, setSubmitButton] = useState(true)
 
     const [disasterInfo, setDisasterInfo] = useState({
         typeofDisaster: "",
@@ -18,6 +19,16 @@ function DisasterForm() {
         country: "",
         pincode: "",
     })
+
+    useEffect(() => {
+        if (disasterInfo.address.length > 0 && disasterInfo.city.length > 0 && disasterInfo.country.length > 0 && disasterInfo.description.length > 0 && disasterInfo.level.length > 0 && disasterInfo.pincode.length > 0 && disasterInfo.typeofDisaster.length > 0) {
+            setSubmitButton(false)
+        }
+        else {
+            setSubmitButton(true)
+        }
+    }, [disasterInfo])
+
 
 
     const handelInputChange = (e) => {
@@ -202,6 +213,7 @@ function DisasterForm() {
                             className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="button"
                             onClick={handelSubmit}
+                            disabled={submitButton}
                         >
                             Submit
                         </button>
