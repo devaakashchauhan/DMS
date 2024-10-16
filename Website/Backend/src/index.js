@@ -5,7 +5,7 @@ import logger from "./logger.js";
 import morgan from "morgan";
 import connectDB from "./db/index.js";
 
-dotenv.config({});
+dotenv.config();
 
 // veriables
 const port = process.env.PORT;

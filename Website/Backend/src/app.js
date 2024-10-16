@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert { type: "json" };
 
-dotenv.config({});
+dotenv.config();
 
 const app = express();
 const apiVersion = process.env.API_VERSION;
