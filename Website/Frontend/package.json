@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://devaakashchauhan.github.io/DMS/",
+  "homepage": "https://devaakashchauhan.github.io/DMS/Frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d ./dist",
+    "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "dependencies": {
