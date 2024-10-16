@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Toaster } from 'react-hot-toast';
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from 'react-router-dom'
 import Home from './pages/Home.jsx'
@@ -14,11 +15,13 @@ import AdminDisaster from './pages/AdminDisaster.jsx';
 import AdminDisasterDetailCom from './components/AdminDisasterDetailCom.jsx';
 import DisasterReport from './pages/DisasterReport.jsx';
 import Login from './pages/Login.jsx';
+import MainLayout from './Layout/MainLayout.jsx';
+import DashboardLayout from './Layout/DashboardLayout.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
 
-    <Route path="/" element={<App />} >
+    <Route path="/" element={<MainLayout />} >
       <Route path="" element={<Home />} />
       <Route path="disasters/" element={<Disaster />} />
       <Route path="carddetails/:id" element={<SpecificDisaster />} />
@@ -27,7 +30,7 @@ const router = createBrowserRouter(
       <Route path="adminlogin/" element={<Login />} />
     </Route>,
 
-    <Route path="dashboard/" element={<Dashboard />} >
+    <Route path="dashboard/" element={<DashboardLayout />} >
       <Route path='disaster/' element={<AdminDisaster />} />
       <Route path='details/:id' element={<AdminDisasterDetailCom />} />
     </Route >

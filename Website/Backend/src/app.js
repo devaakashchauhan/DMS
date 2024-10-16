@@ -2,14 +2,30 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger.json" assert { type: "json" };
 
 dotenv.config({});
 
 const app = express();
 const apiVersion = process.env.API_VERSION;
+const allowedOrigins = process.env.CORS_ORIGIN;
 
 // cors middelware
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg =
+        "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // common middelware
 // info :- express
@@ -22,18 +38,18 @@ app.use(cookieParser());
 
 // import routes
 import { errorHandler } from "./middlewares/error.middleware.js";
-
-// Admin
-import adminRouter from "./routes/admin.routes.js";
-
-// User
-import userRouter from "./routes/user.routes.js";
+import router from "./routes/index.js";
 
 // routes
 app.use(errorHandler);
 
 // all user related
-app.use(`/${apiVersion}/admin`, adminRouter);
-app.use(`/${apiVersion}/user`, userRouter);
+app.use("/api/v1", router);
+
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, { explorer: true }),
+);
 
 export { app };

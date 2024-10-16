@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+
 
 function DisasterForm() {
 
     const baseURL = import.meta.env.VITE_USED_URL
     const version = import.meta.env.VITE_API_VERSION
+
+    const notify = () => toast.success('Disaster reported successfully.');
 
     const navigate = useNavigate()
     const [submitButton, setSubmitButton] = useState(true)
@@ -39,6 +43,7 @@ function DisasterForm() {
         axios.post(`${baseURL}/${version}/user/disasterentry`, disasterInfo)
             .then((response) => {
                 // console.log(response.data)
+                notify()
                 navigate("/disasters/")
             })
             .catch((error) => {
@@ -54,6 +59,7 @@ function DisasterForm() {
 
     return (
         <>
+
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div className="rounded-t bg-white mb-0 px-6 py-6">
                     <div className="text-center flex justify-between">

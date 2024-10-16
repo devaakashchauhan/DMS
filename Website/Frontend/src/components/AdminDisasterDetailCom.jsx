@@ -5,6 +5,7 @@ import both from "../assets/Image/both.jpg"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function AdminDisasterDetailCom() {
     const { id } = useParams();
@@ -12,6 +13,8 @@ function AdminDisasterDetailCom() {
 
     const baseUrl = import.meta.env.VITE_USED_URL
     const apiversion = import.meta.env.VITE_API_VERSION
+
+    const notify = (message) => toast.success(message)
 
     const [updateButton, setUpdateButton] = useState(false)
     const [DisasterInfo, setDisasterInfo] = useState({})
@@ -27,6 +30,7 @@ function AdminDisasterDetailCom() {
     useEffect(() => {
         axios.get(`${baseUrl}/${apiversion}/user/onedisaster/${id}`,)
             .then((response) => {
+
                 setDisasterInfo(response.data.data[0])
                 setDisasterId({ "disasterId": response.data.data[0]._id })
                 setStatusInput({ "status": response.data.data[0].status })
@@ -56,6 +60,7 @@ function AdminDisasterDetailCom() {
         })
             .then((response) => {
                 // console.log(response);
+                notify("Disaster deleted.")
                 navigate("/dashboard/disaster/")
             })
             .catch((error) => {
@@ -69,6 +74,7 @@ function AdminDisasterDetailCom() {
         })
             .then((response) => {
                 // console.log(response);
+                notify("Disaster updated.")
                 setcallApi(!callApi)
                 setUpdateButton(false)
                 navigate("/dashboard/disaster/")
@@ -80,6 +86,7 @@ function AdminDisasterDetailCom() {
 
     return (
         <>
+
             <main className="profile-page">
                 <section className="relative block h-500-px">
                     <div

@@ -1,10 +1,21 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function LoginCom() {
     const baseURL = import.meta.env.VITE_USED_URL
     const version = import.meta.env.VITE_API_VERSION
+
+    const notify = (message, type) => {
+        if (type == "success") {
+
+            toast.success(message)
+        } else if (type == "error") {
+
+            toast.error(message)
+        }
+    }
 
     const navigate = useNavigate()
 
@@ -35,11 +46,13 @@ function LoginCom() {
         })
             .then((response) => {
                 // console.log(response.data)
+                notify("Login Success", "success")
                 localStorage.setItem("role", response.data.data.username)
                 navigate("/dashboard/disaster/")
             })
             .catch((error) => {
-                console.log("Error :- ", error);
+                // console.log("Error :- ", error);
+                notify("Invalid Username or Password", "error")
                 localStorage.clear()
             })
     }

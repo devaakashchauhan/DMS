@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 
 function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  // const [dashboardShow, setDashboardShow] = useState(false)
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("role")) {
+  //     setDashboardShow(true)
+  //   }
+  // }, [localStorage.getItem("role")])
+
   return (
     <>
       <nav className=" top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
@@ -66,7 +74,7 @@ function Navbar() {
               {localStorage.getItem("role") ?
                 <li className="flex items-center">
                   <Link
-                    to="dashboard/disaster/"
+                    to="/dashboard/disaster/"
                     className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 hover:text-blueGray-500"
                   >
                     Dashboard
